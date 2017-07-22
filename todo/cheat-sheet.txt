@@ -1,0 +1,56 @@
+#!/bin/bash
+# Delete all containers
+docker rm -f $(docker ps -a -q)
+# Delete all images
+docker rmi $(docker images -q)
+# Delete all networkd
+docker rmi $(docker network -q)
+
+docker  ls
+
+# Show all container
+docker container ls
+
+# Show all images
+docker images ls
+
+# To list all running and stopped containers
+docker ps -a
+
+# To list only running and stopped containers
+docker ps
+
+
+docker-compose build
+docker-compose up
+docker-compose down
+
+
+docker-compose rm -v
+
+
+psql
+https://stackoverflow.com/questions/29852583/docker-compose-accessing-postgres-shell-psql
+
+https://nickjanetakis.com/blog/dockerize-a-rails-5-postgres-redis-sidekiq-action-cable-app-with-docker-compose
+
+
+https://gist.github.com/bastman/5b57ddb3c11942094f8d0a97d461b430
+
+
+
+docker volume ls -qf dangling=true | xargs -r docker volume rm
+docker network rm $(docker network ls | grep "bridge" | awk '/ / { print $1 }')
+docker rmi $(docker images | grep "none" | awk '/ / { print $3 }')
+docker rm $(docker ps -qa --no-trunc --filter "status=exited")
+
+command: bundle exec rails s -p 3000 -b '0.0.0.0'
+
+
+
+psql
+docker exec -it 591c9e025c9a psql -U postgres todo_development
+
+
+
+docker-compose up -d --build
